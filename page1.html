@@ -28,7 +28,7 @@
             border-radius: 5px;
             width: 100%;
         }
-        input[type="submit"] {
+        input[type="button"] {
             background-color: #0074d9;
             color: #fff;
             padding: 10px 20px;
@@ -36,7 +36,7 @@
             border-radius: 5px;
             margin-top: 10px;
         }
-        input[type="submit"]:hover {
+        input[type="button"]:hover {
             background-color: #0056b3;
         }
     </style>
@@ -45,9 +45,34 @@
     <h1>Hello</h1>
     <p>Upload a .csv file for processing:</p>
     
-    <form action="process_file.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="fileToProcess" id="fileToProcess" accept=".csv">
-        <input type="submit" value="Upload and Process">
-    </form>
+    <input type="file" id="fileToProcess" accept=".csv">
+    <input type="button" value="Process File" onclick="processFile()">
+    
+    <script>
+        function processFile() {
+            const fileInput = document.getElementById("fileToProcess");
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert("Please select a .csv file to process.");
+                return;
+            }
+            
+            if (file.type !== "text/csv") {
+                alert("Please select a valid .csv file.");
+                return;
+            }
+            
+            const reader = new FileReader();
+            
+            reader.onload = function(event) {
+                const csvData = event.target.result;
+                // Process the CSV data here (e.g., parse and display it).
+                console.log(csvData);
+            };
+            
+            reader.readAsText(file);
+        }
+    </script>
 </body>
 </html>
