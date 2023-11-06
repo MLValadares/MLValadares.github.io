@@ -1,9 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Page 1</title>
+    <title>Page 1 - File Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            color: #666;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 70%;
+        }
+        input[type="file"] {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+        }
+        input[type="submit"] {
+            background-color: #0074d9;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <h1>Hello</h1>
+    <p>Upload a file for processing:</p>
+    
+    <form action="process_file.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="fileToProcess" id="fileToProcess">
+        <input type="submit" value="Upload and Process">
+    </form>
 </body>
 </html>
